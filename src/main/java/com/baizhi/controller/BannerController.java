@@ -24,8 +24,10 @@ public class BannerController {
     @RequestMapping("insert")
     @ResponseBody
     public Map insert(Banner banner, MultipartFile file) {
+        System.out.println();
         Map map = new HashMap();
         try {
+
             String fileName = file.getOriginalFilename();
             String suffixName = fileName.substring(fileName.lastIndexOf("."));
             String filePath = "D://lun//";
