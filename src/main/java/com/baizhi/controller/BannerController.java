@@ -20,6 +20,7 @@ public class BannerController {
     @Autowired
     private BannerService bannerService;
 
+
     @RequestMapping("insert")
     @ResponseBody
     public Map insert(Banner banner, MultipartFile file) {
