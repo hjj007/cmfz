@@ -24,7 +24,7 @@ public class BannerController {
     @RequestMapping("insert")
     @ResponseBody
     public Map insert(Banner banner, MultipartFile file) {
-        System.out.println("");
+        System.out.println("111");
         Map map = new HashMap();
         try {
 
