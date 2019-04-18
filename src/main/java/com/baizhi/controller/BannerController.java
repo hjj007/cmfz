@@ -60,6 +60,8 @@ public class BannerController {
         } catch (Exception e) {
             map.put("update", false);
             e.printStackTrace();
+
+
         }
         return map;
     }
