@@ -110,6 +110,13 @@
             <version>1.3.3</version>
         </dependency>
 
+        <!-- https://mvnrepository.com/artifact/com.github.dadiyang/jave -->
+        <dependency>
+            <groupId>com.github.dadiyang</groupId>
+            <artifactId>jave</artifactId>
+            <version>1.0.5</version>
+        </dependency>
+
 
     </dependencies>
 

@@ -1,5 +1,6 @@
 package com.baizhi;
 
+import com.baizhi.service.AlbumService;
 import com.baizhi.service.BannerService;
 import com.baizhi.service.MenuService;
 import com.baizhi.service.UserService;
@@ -18,7 +19,8 @@ public class CmfzHjjApplicationTests {
     MenuService menuService;
     @Autowired
     BannerService bannerService;
-
+    @Autowired
+    AlbumService albumService;
     @Test
     public void contextLoads() {
 		/*User user=new User();
@@ -26,7 +28,7 @@ public class CmfzHjjApplicationTests {
 		user.setPassword("1");
         User login = userService.login(user);
         System.out.println(login);*/
-        System.out.println(bannerService.selectall(1, 10));
+        System.out.println(albumService.selectall());
     }
 
 }

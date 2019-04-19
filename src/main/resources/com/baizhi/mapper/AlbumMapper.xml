@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.baizhi.dao.AlbumDao">
+    <resultMap id="a" type="Album">
+        <result column="id" property="id"/>
+        <result column="title" property="title"/>
+        <result column="amount" property="amount"/>
+        <result column="imgpath" property="imgpath"/>
+        <result column="score" property="score"/>
+        <result column="author" property="author"/>
+        <result column="boardcast" property="boardcast"/>
+        <result column="pudate" property="pudate"/>
+        <result column="brief" property="brief"/>
+        <collection property="children" ofType="Chapter" javaType="java.util.List">
+            <result column="ids" property="id"/>
+            <result column="titles" property="title"/>
+            <result column="size" property="size"/>
+            <result column="filename" property="filename"/>
+            <result column="duration" property="duration"/>
+            <result column="publishdate" property="publishdate"/>
+            <result column="albumid" property="albumid"/>
+        </collection>
+    </resultMap>
+    <select id="selectall" resultMap="a">
+    select t1.*,
+    t2.id ids,
+    t2.title titles,
+    t2.size,
+    t2.duration,
+    t2.publishdate,
+    t2.filename
+    from album t1
+    left JOIN chapter t2
+    on t1.id=t2.albumid
+
+</select>
+
+</mapper>

@@ -35,7 +35,6 @@ public class BannerController {
             File dest = new File(filePath + fileName);
             file.transferTo(dest);//保存文件
             banner.setImgpath(fileName);
-            banner.setId(0);
             banner.setCreatdate(new Date());
             bannerService.insert(banner);
             map.put("insert", true);

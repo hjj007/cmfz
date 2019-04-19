@@ -23,8 +23,8 @@ spring:
       charset: utf-8
       force: true
     multipart:
-       max-file-size: 10MB
-       max-request-size: 100MB
+       max-file-size: 20MB
+       max-request-size: 200MB
 
 
 mybatis:
