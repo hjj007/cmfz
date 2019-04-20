@@ -15,8 +15,8 @@ import javax.persistence.Table;
 public class Master {
     @Id
     @KeySql(useGeneratedKeys = true)
-    private int mid;
+    private Integer mid;
     private String mdarma;
-    private int mstatus;
+    private int mstatus = 1;
     private String mpic;
 }

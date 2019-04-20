@@ -14,15 +14,9 @@
     <script type="text/javascript" src="script/common.js"></script>
     <script type="text/javascript">
 
-        $(function () {
-
-
-            $("#x1").click(function () {
-
-                $("img").prop("src", "${pageContext.request.contextPath}/captchaCode.do?time=" + new Date().getTime());
-
-            });
-        });
+        function aa() {
+            $("#x3").prop("src", "${pageContext.request.contextPath}/captchaCode.do?time=" + new Date().getTime());
+        };
     </script>
 </head>
 <body>
@@ -34,7 +28,7 @@
             <tbody>
             <tr>
                 <td width="190" rowspan="2" align="center" valign="bottom">
-                    <img src="img/header_logo.gif"/>
+                    <img src="${pageContext.request.contextPath}/img/header_logo.gif"/>
                 </td>
                 <th>
                     用户名:
@@ -58,8 +52,8 @@
                 <th>验证码:</th>
                 <td>
                     <input type="text" name="code1" id="code" class="text captcha" maxlength="4" autocomplete="off"/>
-                    <img src="${pageContext.request.contextPath}/captchaCode.do"/>
-                    <a href="javascript:void(0)" id="x1">看不清，换一张</a>
+                    <img src="${pageContext.request.contextPath}/captchaCode.do" id="x3"/>
+                    <a href="javascript:void(0)" onclick="aa()">看不清,换一张</a>
                 </td>
             </tr>
             <tr>

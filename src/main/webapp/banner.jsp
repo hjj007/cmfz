@@ -49,6 +49,13 @@
                     //alert('帮助按钮')
                     $('#myDatagrid').edatagrid('saveRow');
                 }
+            }, '-', {
+                iconCls: 'icon-print',
+                text: '导出',
+                handler: function () {
+                    location.href = "${pageContext.request.contextPath}/banner/download";
+
+                }
             }];
             //修改对话框
             $("#updateDiv").dialog({
@@ -110,6 +117,7 @@
             });
 
         })
+
 
         function doInsert() {
             $("#insertDiv").val("")
@@ -174,7 +182,6 @@
     </form>
 </div>
 
-<%--修改对话框对应的HTML代码===END===--%>
 
 <%--修改对话框底部的提交按钮--%>
 <div id="updateBtn">

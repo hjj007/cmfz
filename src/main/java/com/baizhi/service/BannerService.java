@@ -1,7 +1,9 @@
 package com.baizhi.service;
 
 import com.baizhi.entity.Banner;
+import org.apache.poi.ss.usermodel.Workbook;
 
+import java.util.List;
 import java.util.Map;
 
 public interface BannerService {
@@ -12,4 +14,8 @@ public interface BannerService {
     void update(Banner banner);
 
     void deleteone(int id);
+
+    List<Banner> selectAll();
+
+    Workbook deriveExcel();
 }

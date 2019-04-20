@@ -18,7 +18,7 @@ import java.util.Date;
 public class User {
     @Id
     @KeySql(useGeneratedKeys = true)
-    private int id;
+    private Integer id;
     private String name;
     private String dharma;
     private int sex;
@@ -32,6 +32,6 @@ public class User {
     @JSONField(format = "yyyy-MM-dd")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date date;
-    private Master master;
+    private int masterid;
 
 }

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
 import java.net.URLEncoder;
+import java.util.List;
 
 @Service
 public class ChapterServiceimpl implements ChapterService {
@@ -60,6 +61,12 @@ public class ChapterServiceimpl implements ChapterService {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public List<Chapter> selectall() {
+        List<Chapter> list = chapterDao.selectAll();
+        return list;
     }
 
 

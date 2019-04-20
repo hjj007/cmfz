@@ -35,6 +35,7 @@ public class ChapterController {
         Map map = new HashMap();
         try {
             String fileName = file.getOriginalFilename();
+
             String suffixName = fileName.substring(fileName.lastIndexOf("."));
             String filePath = "d:\\lun\\";
             System.out.println(UUID.randomUUID().toString());
@@ -45,7 +46,8 @@ public class ChapterController {
             chapter.setPublishdate(new Date());
             chapter.setSize(getPrintSize(file.getSize()));
             Long duration = AudioUtil.getDuration(desc);
-            chapter.setDuration(String.valueOf(duration));
+            String s = formatDateTime(duration);
+            chapter.setDuration(s);
 
             chapterService.insert(chapter);
             map.put("inserta", true);
@@ -69,6 +71,8 @@ public class ChapterController {
         String filePath = filePath1 + filename;
         File file = new File(filePath);
         //修改下载时的名字
+
+
         String extension = FilenameUtils.getExtension(filename);
         String oldName = title + "." + extension;
         //下载
@@ -120,6 +124,28 @@ public class ChapterController {
             return String.valueOf((size / 100)) + "."
                     + String.valueOf((size % 100)) + "GB";
         }
+    }
+
+    public static String formatDateTime(long mss) {
+        String DateTimes = null;
+        long days = mss / (60 * 60 * 24);
+        long hours = (mss % (60 * 60 * 24)) / (60 * 60);
+        long minutes = (mss % (60 * 60)) / 60;
+        long seconds = mss % 60;
+        if (hours > 0 && hours < 10) {
+            DateTimes = "0" + hours + ":" + minutes + ":" + seconds;
+        } else if (hours >= 10) {
+            DateTimes = hours + ":" + minutes + ":" + seconds;
+        } else if (minutes > 0 && minutes < 10) {
+            DateTimes = "00:" + "0" + minutes + ":" + seconds;
+        } else if (minutes >= 10) {
+            DateTimes = "00:" + minutes + ":" + seconds;
+        } else if (seconds > 0 && seconds < 10) {
+            DateTimes = "00:00:0" + seconds;
+        } else {
+            DateTimes = "00:00:" + seconds;
+        }
+        return DateTimes;
     }
 
 

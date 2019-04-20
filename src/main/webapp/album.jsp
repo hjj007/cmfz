@@ -27,10 +27,10 @@
                                 $('#dd_album').dialog('open');
                                 $('#albumImg').prop("src", "${pageContext.request.contextPath}/lun/" + row.imgpath);
                             } else {
-                                alert("请选择专辑")
+                                $.messager.alert('警告!', "请选择专辑")
                             }
                         } else {
-                            alert("请选择专辑")
+                            $.messager.alert('警告!', "请选择专辑")
                         }
                     }
                 }, '-', {
@@ -55,11 +55,35 @@
                         //alert('帮助按钮')
                         var row = $("#myDatagrid").datagrid("getSelected");
                         if (row == null) {
-                            $.messager.alert('提示消息', '请选择要修改项');
+                            $.messager.alert('警告!', '请选择要下载项');
                             return;
                         }
                         var row = $('#myDatagrid').datagrid('getSelected');
                         location.href = "${pageContext.request.contextPath}/chapter/download?id=" + row.id;
+                    }
+                }, '-', {
+                    iconCls: 'icon-tip',
+                    text: '播放',
+                    handler: function () {
+                        //alert('帮助按钮')
+                        var row = $("#myDatagrid").datagrid("getSelected");
+                        if (row == null) {
+                            $.messager.alert('警告!', '请选择要播放的音频');
+                            return;
+                        } else {
+
+                            //var row = $("#myDatagrid").datagrid("getSelected");
+                            $("#radio").prop("src", '${pageContext.request.contextPath}/lun/' + row.filename);
+                            $("#music").dialog("open")
+
+                        }
+                    }
+                }, '-', {
+                    iconCls: 'icon-print',
+                    text: '导出',
+                    handler: function () {
+                        location.href = "${pageContext.request.contextPath}/album/download";
+
                     }
                 }];
 
@@ -98,6 +122,7 @@
 
         })
 
+
         function doInsert() {
             $("#insertDiv").val("")
             $("#insertForm").form("submit", {
@@ -133,8 +158,6 @@
                     data = JSON.parse(data);
                     if (data.inserta) {
                         location.href = "${pageContext.request.contextPath}/album.jsp";
-
-
                         $("#insertDiv1").dialog("close");
                         $("#myDatagrid").datagrid("load");
                     } else {
@@ -149,7 +172,10 @@
 </head>
 <body>
 <table id="myDatagrid"></table>
-
+<div id="music" class="easyui-dialog" title="播放专辑章节" style="width:320px;height:80px;"
+     data-options="iconCls:'icon-mini_refresh',resizable:true,modal:true,closed:true">
+    <audio src="" controls="controls" type="audio/wav" autoplay="autoplay" width="30px" id="radio"></audio>
+    <div>
 <div id="insertDiv">
     <form id="insertForm" method="post" enctype="multipart/form-data">
         专辑：<input name="title"/><br/>
@@ -162,8 +188,8 @@
         <br/>
     </form>
 </div>
-<div id="dd_album" class="easyui-dialog" title="My Dialog" style="width:600px;height:600px;"
-     data-options="iconCls:'icon-save',resizable:true,modal:true,closed:true">
+        <div id="dd_album" class="easyui-dialog" title="专辑美照" style="width:300px;height:300px;"
+             data-options="iconCls:'icon-save',resizable:true,modal:true,closed:true">
     <img src="" id="albumImg"/>
 </div>
 <div id="insertBtn">
@@ -172,16 +198,17 @@
 
 <div id="insertDiv1">
     <form id="insertForm1" method="post" enctype="multipart/form-data">
-
         <div>
             章节<input class="easyui-validatebox" type="text" name="title" data-options="required:true"/>
         </div>
-        音频：<input class="easyui-filebox" name="file"/>
         <br/>
         专辑：<select type="text" name="albumid">
         <c:forEach var="a" items="${sessionScope.list}">
             <option value="${a.id}">${a.title}</option>
         </c:forEach>
+        <br/>
+        音频：<input class="easyui-filebox" name="file"/>
+
     </select>
 
     </form>
@@ -189,6 +216,8 @@
 
 <div id="insertBtn1">
     <a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-ok'" onclick="doInsert1()">提交</a>
+</div>
+    </div>
 </div>
 </body>
 </html>

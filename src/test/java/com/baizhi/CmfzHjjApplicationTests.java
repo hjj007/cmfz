@@ -28,7 +28,7 @@ public class CmfzHjjApplicationTests {
 		user.setPassword("1");
         User login = userService.login(user);
         System.out.println(login);*/
-        System.out.println(albumService.selectall());
+        System.out.println(userService.selectall());
     }
 
 }

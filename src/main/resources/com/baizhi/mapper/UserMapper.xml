@@ -8,7 +8,17 @@
        select * from user where phone=#{phone} and password=#{password}
    </select>
     <insert id="insertuser">
-    insert into user()
-</insert>
-
+        insert into USER values (0,#{name},#{dharma},#{sex},#{province},
+        #{city},#{sign},1,#{phone},
+        #{password},#{pic},#{date},#{masterid})
+    </insert>
+    <select id="selectall" resultType="User">
+        select * from USER
+    </select>
+    <select id="selectone1" resultType="User">
+        select * from user where id=#{id}
+    </select>
+    <update id="update">
+        update user set status=#{status} where id=#{id}
+    </update>
 </mapper>

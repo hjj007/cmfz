@@ -16,7 +16,7 @@ import java.util.Date;
 public class Banner {
     @Id
     @KeySql(useGeneratedKeys = true)
-    private int id;
+    private Integer id;
     private String title;
     private String imgpath;
     @JSONField(format = "yyyy-MM-dd")
